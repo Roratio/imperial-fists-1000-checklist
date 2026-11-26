@@ -75,6 +75,8 @@
     .doctrine-choice { display: flex; align-items: flex-start; gap: 8px; padding: 10px; background: #202b29; border: 1px solid var(--line); border-radius: 12px; cursor: pointer; }
     .doctrine-choice input { flex: 0 0 auto; width: 18px; height: 18px; margin: 2px 0 0; accent-color: var(--gold); }
     .doctrine-choice span { font-size: .85rem; font-weight: 700; }
+    .ability-choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 12px; }
+    .ability-choices .doctrine-choice { min-height: 100%; }
     .doctrine-note { display: block; margin-top: 8px; color: #b4c0b7; font-size: .84rem; }
     .stratagem-group { margin: 14px 0 20px; }
     .stratagem-group h3 { margin: 0 0 4px; padding: 0 18px; color: var(--gold); font-size: 1rem; }
@@ -92,7 +94,7 @@
       header { padding-top: 26px; }
       .progress-panel { grid-template-columns: 1fr; gap: 13px; }
       .round-actions { justify-self: start; }
-      .doctrine-choices { grid-template-columns: 1fr; }
+      .doctrine-choices, .ability-choices { grid-template-columns: 1fr; }
       .layout { grid-template-columns: 1fr; }
       aside { position: static; overflow-x: auto; padding: 10px; }
       .aside-title { margin: 2px 7px 7px; }
@@ -133,7 +135,7 @@
     <header>
       <div class="eyebrow">インペリアルフィスト · 1,000ポイント</div>
       <h1>戦闘チェックリスト</h1>
-      <p class="intro">能力や策略を使うタイミングで確認。チェックはこのブラウザーに自動保存されます。「次のラウンドへ」ではドクトリンの使用記録を残し、それ以外をリセットします。</p>
+      <p class="intro">能力や策略を使うタイミングで確認。チェックはこのブラウザーに自動保存されます。「次のラウンドへ」ではドクトリンと能力の選択を残し、それ以外をリセットします。</p>
       <div class="chips"><span class="chip"><strong>デタッチメントポイント2</strong> アサルト同胞団＋タクティカス攻撃部隊</span><span class="chip">奪取と確保</span><span class="chip">インカージョン</span></div>
     </header>
     <div class="progress-panel" aria-label="チェック進捗">
@@ -165,8 +167,10 @@
 
         <section class="section" id="movement"><div class="section-head"><span class="phase-no">02</span><h2>移動フェイズ</h2><span class="section-note">進軍／降車の判断時</span></div><div class="items">
           <label class="item" data-unit="ブレイドガード／アサルト・インターセッサー／インターセッサー"><input type="checkbox"><span class="item-copy"><span class="item-title">進軍ロールを振り直す</span><span class="item-unit">対象ユニット：ブレイドガード・ベテラン・スカッド／アサルト・インターセッサー・スカッド／インターセッサー・スカッド</span><span class="item-detail"><span class="badge purple">タクティカス攻撃部隊</span>タクティカスの進軍ロールを振り直せる。</span></span></label>
-          <label class="item" data-unit="ライブラリアン＋インターセッサー・スカッド"><input type="checkbox"><span class="item-copy"><span class="item-title">進軍時に「時のヴェール」を使うか選ぶ</span><span class="item-unit">対象ユニット：ライブラリアンの合流ユニット</span><span class="item-detail">進軍を選んだ時、サイキック判定に成功すれば進軍ロールを6に変更。1が出ると戦闘ショック。</span></span></label>
-          <label class="item" data-unit="ライブラリアン＋インターセッサー・スカッド"><input type="checkbox"><span class="item-copy"><span class="item-title">「フォース・ドーム」を使うか選ぶ</span><span class="item-unit">対象ユニット：ライブラリアンの合流ユニット</span><span class="item-detail">サイキック判定に成功すれば次の自分のターン開始まで4+スペシャルセーヴ。1が出ると戦闘ショック。このラウンドは「時のヴェール」とどちらか一方。</span></span></label>
+          <div class="item doctrine-item"><div class="item-copy"><span class="item-title">サイキック能力を1つ選ぶ</span><span class="item-unit">対象ユニット：ライブラリアンの合流ユニット</span><span class="item-detail"><span class="badge">サイキックレベル1</span>各ラウンドに使える能力はどちらか1つ。選択は「次のラウンドへ」を押しても保持します。</span><div class="ability-choices" role="radiogroup" aria-label="ライブラリアンのサイキック能力">
+            <label class="doctrine-choice"><input type="radio" name="librarian-power" data-check-id="choice-librarian-veil"><span>時のヴェール<br><small>進軍を選んだ時に判定。成功で進軍ロールを6にする。判定で1なら戦闘ショック。</small></span></label>
+            <label class="doctrine-choice"><input type="radio" name="librarian-power" data-check-id="choice-librarian-force-dome"><span>フォース・ドーム<br><small>判定成功で次の自分のターン開始まで4+スペシャルセーヴ。判定で1なら戦闘ショック。</small></span></label>
+          </div></div></div>
           <label class="item" data-unit="インパルサー"><input type="checkbox"><span class="item-copy"><span class="item-title">進軍後に降車を検討</span><span class="item-unit">対象ユニット：インパルサー＋ターミネイターを除く搭乗歩兵</span><span class="item-detail"><span class="badge">急速降車</span>搭乗ユニットは衝撃降車を行える。輸送上限は7体。</span></span></label>
         </div></section>
 
@@ -180,7 +184,10 @@
         <section class="section" id="fight"><div class="section-head"><span class="phase-no">04</span><h2>突撃・白兵戦フェイズ</h2><span class="section-note">突撃後／攻撃ユニット選択時</span></div><div class="items">
           <label class="item" data-unit="アサルト・インターセッサー・スカッド"><input type="checkbox"><span class="item-copy"><span class="item-title">突撃後の強化を適用</span><span class="item-unit">対象ユニット：アサルト・インターセッサー・スカッド</span><span class="item-detail"><span class="badge">目標指定の突撃</span>このターンに突撃移動していれば、白兵戦の筋力+1、貫通+1。</span></span></label>
           <label class="item" data-unit="キャプテン＋ブレイドガード／レフテナント＋アサルト・インターセッサー"><input type="checkbox"><span class="item-copy"><span class="item-title">熾烈な強襲の連続命中1を適用</span><span class="item-unit">対象ユニット：キャプテン＋ブレイドガード／レフテナント＋アサルト・インターセッサー</span><span class="item-detail">モンスター／ビークル以外への白兵戦攻撃に常時適用。</span></span></label>
-          <label class="item" data-unit="キャプテン＋ブレイドガード・ベテラン・スカッド"><input type="checkbox"><span class="item-copy"><span class="item-title">選択能力を使う</span><span class="item-unit">対象ユニット：キャプテン＋ブレイドガード・ベテラン・スカッド</span><span class="item-detail"><span class="badge">1ターンに1回</span>白兵戦を行う時は命中+1、敵の攻撃対象になった時は命中-1。どちらか一方を選択。</span></span></label>
+          <div class="item doctrine-item"><div class="item-copy"><span class="item-title">キャプテンの戦闘能力を1つ選ぶ</span><span class="item-unit">対象ユニット：キャプテン＋ブレイドガード・ベテラン・スカッド</span><span class="item-detail"><span class="badge">1ターンに1回</span>選択した能力を使用。選択は「次のラウンドへ」を押しても保持します。</span><div class="ability-choices" role="radiogroup" aria-label="キャプテンの戦闘能力">
+            <label class="doctrine-choice"><input type="radio" name="captain-ability" data-check-id="choice-captain-fight"><span>白兵戦を行うため選ばれた時<br><small>このユニットの攻撃の命中+1</small></span></label>
+            <label class="doctrine-choice"><input type="radio" name="captain-ability" data-check-id="choice-captain-defend"><span>敵の攻撃対象に選ばれた時<br><small>その攻撃の命中-1</small></span></label>
+          </div></div></div>
           <label class="item" data-unit="キャプテン＋ブレイドガード・ベテラン・スカッド"><input type="checkbox"><span class="item-copy"><span class="item-title">最後の奮戦を使う</span><span class="item-unit">対象ユニット：キャプテン＋ブレイドガード・ベテラン・スカッド</span><span class="item-detail"><span class="badge">1戦闘に1回</span>白兵戦を行う時、指揮官モデルの攻撃回数+3、致命的な傷。</span></span></label>
         </div></section>
 
@@ -221,7 +228,7 @@
     (() => {
       const storageKey = 'imperial-fists-1000-checklist-v2';
       const legacyStorageKey = 'imperial-fists-1000-checklist-v1';
-      const boxes = [...document.querySelectorAll('input[type="checkbox"]')];
+      const boxes = [...document.querySelectorAll('input[type="checkbox"], input[type="radio"]')];
       const legacyOrder = [
         'テレポート・ホーマーを置く', '到着方法を決める', 'ウォーロードのCP獲得を確認', null,
         '合流ユニットにドクトリンを適用', '他の合流ユニットにも同じドクトリンを適用', '負傷モデルを回復する',
@@ -249,11 +256,19 @@
       };
       try {
         const saved = JSON.parse(localStorage.getItem(storageKey) || 'null');
-        if (saved && !Array.isArray(saved)) boxes.forEach(box => { box.checked = saved[checkId(box)] === true; });
+        if (saved && !Array.isArray(saved)) {
+          boxes.forEach(box => { box.checked = saved[checkId(box)] === true; });
+          if (!saved['choice-librarian-veil'] && !saved['choice-librarian-force-dome']) {
+            const oldVeil = saved['進軍時に「時のヴェール」を使うか選ぶ'] === true;
+            const oldDome = saved['「フォース・ドーム」を使うか選ぶ'] === true;
+            if (oldVeil || oldDome) document.querySelector(`[data-check-id="${oldVeil ? 'choice-librarian-veil' : 'choice-librarian-force-dome'}"]`).checked = true;
+          }
+        }
         else {
           const legacy = JSON.parse(localStorage.getItem(legacyStorageKey) || '[]');
           const migrated = {};
           legacyOrder.forEach((id, index) => { if (id && legacy[index] === true) migrated[id.startsWith('strategy:') ? `strategy:${id.slice(9)}` : id] = true; });
+          if (legacy[8] === true || legacy[9] === true) migrated[legacy[8] === true ? 'choice-librarian-veil' : 'choice-librarian-force-dome'] = true;
           boxes.forEach(box => { box.checked = migrated[checkId(box)] === true; });
           if (legacy.length) localStorage.setItem(storageKey, JSON.stringify(Object.fromEntries(boxes.map(box => [checkId(box), box.checked]))));
         }
@@ -265,7 +280,7 @@
         window.setTimeout(() => { status.textContent = '自動保存'; }, 1400);
       }));
       document.getElementById('nextRoundButton').addEventListener('click', () => {
-        boxes.filter(box => !box.dataset.checkId?.startsWith('doctrine-')).forEach(box => { box.checked = false; });
+        boxes.filter(box => !box.dataset.checkId?.startsWith('doctrine-') && !box.dataset.checkId?.startsWith('choice-')).forEach(box => { box.checked = false; });
         render(); save(); status.textContent = '次のラウンド用にリセットしました';
       });
       document.getElementById('resetButton').addEventListener('click', () => {
