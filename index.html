@@ -151,8 +151,8 @@
       </nav></aside>
       <main class="content">
         <section class="section" id="before"><div class="section-head"><span class="phase-no">準備</span><h2>戦闘開始前</h2><span class="section-note">配置前／バトル開始時</span></div><div class="items">
-          <label class="item" data-unit="ターミネイター・スカッド"><input type="checkbox"><span class="item-copy"><span class="item-title">テレポート・ホーマーを置く</span><span class="item-unit">対象ユニット：ターミネイター・スカッド</span><span class="item-detail">使う場合はトークンを戦場に配置（1戦闘につき1回）。敵が1インチ以内で移動を終えるとトークンは取り除かれる。</span></span></label>
-          <label class="item" data-unit="ターミネイター・スカッド"><input type="checkbox"><span class="item-copy"><span class="item-title">到着方法を決める</span><span class="item-unit">対象ユニット：ターミネイター・スカッド</span><span class="item-detail"><span class="badge">ディープストライク</span>予備戦力から配置する場合、後でホーマーを使った「緊急降下」を狙う位置も意識。</span></span></label>
+          <label class="item" data-unit="ターミネイター・スカッド"><input type="checkbox" data-check-id="before-teleport-homer"><span class="item-copy"><span class="item-title">テレポート・ホーマーを置く</span><span class="item-unit">対象ユニット：ターミネイター・スカッド</span><span class="item-detail">使う場合はトークンを戦場に配置（1戦闘につき1回）。敵が1インチ以内で移動を終えるとトークンは取り除かれる。</span></span></label>
+          <label class="item" data-unit="ターミネイター・スカッド"><input type="checkbox" data-check-id="before-arrival-plan"><span class="item-copy"><span class="item-title">到着方法を決める</span><span class="item-unit">対象ユニット：ターミネイター・スカッド</span><span class="item-detail"><span class="badge">ディープストライク</span>予備戦力から配置する場合、後でホーマーを使った「緊急降下」を狙う位置も意識。</span></span></label>
         </div></section>
 
         <section class="section" id="command"><div class="section-head"><span class="phase-no">01</span><h2>自分の指揮フェイズ</h2><span class="section-note">バトルラウンド開始時</span></div><div class="items">
@@ -269,6 +269,8 @@
         const saved = JSON.parse(localStorage.getItem(storageKey) || 'null');
         if (saved && !Array.isArray(saved)) {
           boxes.forEach(box => { box.checked = saved[checkId(box)] === true; });
+          if (!saved['before-teleport-homer'] && saved['テレポート・ホーマーを置く'] === true) document.querySelector('[data-check-id="before-teleport-homer"]').checked = true;
+          if (!saved['before-arrival-plan'] && saved['到着方法を決める'] === true) document.querySelector('[data-check-id="before-arrival-plan"]').checked = true;
           if (!saved['battle-captain-last-stand'] && saved['最後の奮戦を使う'] === true) document.querySelector('[data-check-id="battle-captain-last-stand"]').checked = true;
           if (!saved['choice-librarian-veil'] && !saved['choice-librarian-force-dome']) {
             const oldVeil = saved['進軍時に「時のヴェール」を使うか選ぶ'] === true;
@@ -280,6 +282,8 @@
           const legacy = JSON.parse(localStorage.getItem(legacyStorageKey) || '[]');
           const migrated = {};
           legacyOrder.forEach((id, index) => { if (id && legacy[index] === true) migrated[id.startsWith('strategy:') ? `strategy:${id.slice(9)}` : id] = true; });
+          if (migrated['テレポート・ホーマーを置く'] === true) migrated['before-teleport-homer'] = true;
+          if (migrated['到着方法を決める'] === true) migrated['before-arrival-plan'] = true;
           if (legacy[8] === true || legacy[9] === true) migrated[legacy[8] === true ? 'choice-librarian-veil' : 'choice-librarian-force-dome'] = true;
           if (migrated['最後の奮戦を使う'] === true) migrated['battle-captain-last-stand'] = true;
           boxes.forEach(box => { box.checked = migrated[checkId(box)] === true; });
@@ -295,7 +299,7 @@
         window.setTimeout(() => { status.textContent = '自動保存'; }, 1400);
       }));
       document.getElementById('nextRoundButton').addEventListener('click', () => {
-        boxes.filter(box => !box.dataset.checkId?.startsWith('doctrine-') && !box.dataset.checkId?.startsWith('choice-librarian-') && box.dataset.checkId !== 'battle-captain-last-stand').forEach(box => { box.checked = false; });
+        boxes.filter(box => !box.dataset.checkId?.startsWith('before-') && !box.dataset.checkId?.startsWith('doctrine-') && !box.dataset.checkId?.startsWith('choice-librarian-') && box.dataset.checkId !== 'battle-captain-last-stand').forEach(box => { box.checked = false; });
         syncBladeguardHitMinusReminder();
         render(); save(); status.textContent = '次のラウンド用にリセットしました';
       });
