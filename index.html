@@ -60,7 +60,7 @@
     .section-note { margin-left: auto; color: var(--muted); font-size: .78rem; }
     .items { padding: 6px 18px 11px; }
     .item { display: grid; grid-template-columns: 23px minmax(0, 1fr); gap: 12px; padding: 13px 2px; border-bottom: 1px solid #2c3935; cursor: pointer; }
-    #opponent .item { grid-template-columns: minmax(0, 1fr); }
+    #opponent .item:not(:has(input)) { grid-template-columns: minmax(0, 1fr); }
     .item:last-child { border-bottom: 0; }
     .item input { width: 19px; height: 19px; margin: 3px 0 0; accent-color: var(--gold); cursor: pointer; }
     .item-copy { min-width: 0; }
@@ -186,14 +186,15 @@
           <label class="item" data-unit="アサルト・インターセッサー・スカッド"><input type="checkbox"><span class="item-copy"><span class="item-title">突撃後の強化を適用</span><span class="item-unit">対象ユニット：アサルト・インターセッサー・スカッド</span><span class="item-detail"><span class="badge">目標指定の突撃</span>このターンに突撃移動していれば、白兵戦の筋力+1、貫通+1。</span></span></label>
           <label class="item" data-unit="キャプテン＋ブレイドガード／レフテナント＋アサルト・インターセッサー"><input type="checkbox"><span class="item-copy"><span class="item-title">熾烈な強襲の連続命中1を適用</span><span class="item-unit">対象ユニット：キャプテン＋ブレイドガード／レフテナント＋アサルト・インターセッサー</span><span class="item-detail">モンスター／ビークル以外への白兵戦攻撃に常時適用。</span></span></label>
           <div class="item doctrine-item"><div class="item-copy"><span class="item-title">ブレイドガード・ベテランの能力を1つ選ぶ</span><span class="item-unit">対象ユニット：キャプテン＋ブレイドガード・ベテラン・スカッド</span><span class="item-detail"><span class="badge">1ターンに1回</span>このラウンドで使用する能力を選択。次のラウンドへ進むと選択は解除されます。</span><div class="ability-choices" role="radiogroup" aria-label="ブレイドガード・ベテランの能力">
-            <label class="doctrine-choice"><input type="radio" name="bladeguard-ability" data-check-id="round-bladeguard-fight"><span>白兵戦を行うため選ばれた時<br><small>このユニットの攻撃の命中+1</small></span></label>
-            <label class="doctrine-choice"><input type="radio" name="bladeguard-ability" data-check-id="round-bladeguard-defend"><span>敵の攻撃対象に選ばれた時<br><small>その攻撃の命中-1</small></span></label>
+            <label class="doctrine-choice"><input type="radio" name="bladeguard-ability" data-check-id="round-bladeguard-fight"><span>このユニットの攻撃の命中+1</span></label>
+            <label class="doctrine-choice"><input type="radio" name="bladeguard-ability" data-check-id="round-bladeguard-defend"><span>その攻撃の命中-1</span></label>
           </div></div></div>
           <label class="item" data-unit="キャプテン＋ブレイドガード・ベテラン・スカッド"><input type="checkbox" data-check-id="battle-captain-last-stand"><span class="item-copy"><span class="item-title">最後の奮戦を使う</span><span class="item-unit">対象ユニット：キャプテン＋ブレイドガード・ベテラン・スカッド</span><span class="item-detail"><span class="badge">1戦闘に1回</span>白兵戦を行う時、指揮官モデルの攻撃回数+3、致命的な傷。使用済みチェックはラウンドをまたいで保持。</span></span></label>
         </div></section>
 
         <section class="section" id="opponent"><div class="section-head"><span class="phase-no">相手</span><h2>相手の射撃・白兵戦フェイズ</h2><span class="section-note">敵が攻撃対象を選んだ時</span></div><div class="items">
           <div class="item" data-unit="攻撃対象になった味方アスタルテス"><span class="item-copy"><span class="item-title">相手の攻撃対象を見て策略を検討</span><span class="item-unit">対象ユニット：攻撃対象になった味方アスタルテス</span><span class="item-detail">「皇帝の鎧」を使えるタイミングです。詳細はデタッチメント策略欄を確認。</span></span></div>
+          <label class="item" data-unit="キャプテン＋ブレイドガード・ベテラン・スカッド"><input type="checkbox" data-check-id="round-bladeguard-hit-minus"><span class="item-copy"><span class="item-title">ブレイドガードの能力で敵の命中ロール−1を適用</span><span class="item-unit">対象ユニット：キャプテン＋ブレイドガード・ベテラン・スカッド</span><span class="item-detail">このラウンドに「その攻撃の命中−1」を選び、このユニットが攻撃対象になった時にチェック。</span></span></label>
           <div class="item" data-unit="まだ白兵戦を行っていない味方アスタルテス"><span class="item-copy"><span class="item-title">白兵戦でモデルが倒されたら策略を確認</span><span class="item-unit">対象ユニット：まだ白兵戦を行っていない味方アスタルテス</span><span class="item-detail">「死してなお任務を」を使えるタイミングです。詳細はデタッチメント策略欄を確認。</span></span></div>
         </div></section>
 
