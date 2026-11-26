@@ -19,6 +19,7 @@
 
 ## ルール参照
 
+- [ウォーハンマー公式：コアルール（日本語PDF）](https://warhammer40000.com/wp-content/uploads/2023/06/JKJ8hfqeU5hhQ1X3.pdf) — 「全力移動ロール」「貫通値」「スペシャルセーヴ値」などの表記に準拠
 - [スペースマリーンのルール](https://wahapedia.ru/wh40k11ed/factions/space-marines/no-supplements)
 - [ウォーハンマー公式：スペースマリーンのデタッチメント](https://www.warhammer-community.com/en-gb/articles/zcobdkzh/your-first-look-at-15-new-space-marine-detachments/)
 
