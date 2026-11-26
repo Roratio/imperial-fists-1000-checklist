@@ -6,14 +6,17 @@
 
 - `index.html` をブラウザーで開くと使えます。
 - チェック状態はブラウザーのローカルストレージに保存されます。
-- 「チェックをリセット」で次の戦闘用にクリアできます。
+- 「次のラウンドへ」で戦闘ドクトリンの使用記録を残して、他のチェックをリセットできます。
+- 「全チェックをリセット」で戦闘ドクトリンを含め、すべてのチェックをクリアできます。
+- デタッチメント策略はデタッチメント別・使用フェイズ別に整理し、各策略を個別にチェックできます。
+- 各チェック項目の対象ユニットは、説明文とは分けて表示します。
 - 印刷ダイアログからPDF保存もできます。
 
 外部ライブラリやビルド工程はありません。GitHub Pagesではリポジトリのルートに `index.html` を置いて公開できます。
 
 ## ルール参照
 
-- [Space Marines 11th edition](https://wahapedia.ru/wh40k11ed/factions/space-marines/no-supplements)
-- [Warhammer Community: Space Marine detachments](https://www.warhammer-community.com/en-gb/articles/zcobdkzh/your-first-look-at-15-new-space-marine-detachments/)
+- [スペースマリーンのルール](https://wahapedia.ru/wh40k11ed/factions/space-marines/no-supplements)
+- [ウォーハンマー公式：スペースマリーンのデタッチメント](https://www.warhammer-community.com/en-gb/articles/zcobdkzh/your-first-look-at-15-new-space-marine-detachments/)
 
 
