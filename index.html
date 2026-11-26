@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101719">
+  <meta name="description" content="インペリアルフィスト 1000ポイント軍の能力・策略タイミングを確認するチェックリスト">
+  <title>インペリアルフィスト｜戦闘チェックリスト</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #edf2eb;
+      --muted: #aab6ad;
+      --bg: #101719;
+      --panel: #1a2525;
+      --panel-2: #222f2d;
+      --line: #394642;
+      --gold: #e6b84f;
+      --gold-soft: #3b321e;
+      --green: #a9ca78;
+      --red: #df806b;
+      --radius: 18px;
+      font-family: Inter, "Segoe UI", "Yu Gothic UI", Meiryo, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--ink); background: radial-gradient(ellipse at 78% -10%, #31423a 0, transparent 38%), var(--bg); line-height: 1.65; }
+    button, input { font: inherit; }
+    button { color: inherit; }
+    .shell { max-width: 1120px; margin: 0 auto; padding: 28px 22px 80px; }
+    .topline { display: flex; align-items: center; justify-content: space-between; gap: 12px; color: var(--muted); font-size: .82rem; letter-spacing: .08em; text-transform: uppercase; }
+    .mark { display: flex; align-items: center; gap: 10px; }
+    .mark-icon { display: grid; place-items: center; width: 34px; height: 34px; border: 1px solid #8d7434; border-radius: 10px; color: var(--gold); font-weight: 800; }
+    header { padding: 35px 0 26px; }
+    .eyebrow { color: var(--gold); font-size: .82rem; font-weight: 750; letter-spacing: .14em; }
+    h1 { margin: 8px 0 12px; max-width: 780px; font-family: Georgia, "Yu Mincho", serif; font-size: clamp(2.15rem, 6vw, 4.35rem); line-height: 1.08; letter-spacing: -.035em; }
+    .intro { max-width: 700px; margin: 0; color: #c0cbc2; font-size: 1.02rem; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+    .chip { padding: 5px 11px; color: #dce4d9; background: #202b29; border: 1px solid var(--line); border-radius: 99px; font-size: .82rem; }
+    .chip strong { color: var(--gold); font-weight: 700; }
+    .progress-panel { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 18px; margin: 18px 0 24px; padding: 17px 19px; background: #182220d9; border: 1px solid var(--line); border-radius: var(--radius); }
+    .progress-label { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 9px; font-size: .9rem; }
+    .progress-label span:last-child { color: var(--gold); font-variant-numeric: tabular-nums; }
+    .bar { height: 8px; overflow: hidden; background: #303c38; border-radius: 99px; }
+    .bar-fill { width: 0; height: 100%; background: linear-gradient(90deg, #9d7831, var(--gold)); border-radius: inherit; transition: width .2s ease; }
+    .reset { padding: 8px 13px; background: transparent; border: 1px solid #58665f; border-radius: 10px; cursor: pointer; font-size: .85rem; }
+    .reset:hover { border-color: var(--gold); color: var(--gold); }
+    .layout { display: grid; grid-template-columns: 225px minmax(0, 1fr); align-items: start; gap: 23px; }
+    aside { position: sticky; top: 18px; padding: 15px; background: #172120; border: 1px solid var(--line); border-radius: var(--radius); }
+    .aside-title { margin: 0 0 10px; color: var(--muted); font-size: .76rem; letter-spacing: .11em; text-transform: uppercase; }
+    nav { display: grid; gap: 4px; }
+    nav a { padding: 8px 10px; color: #c6d0c8; text-decoration: none; border-radius: 8px; font-size: .88rem; }
+    nav a:hover { color: var(--gold); background: #26322e; }
+    .content { min-width: 0; }
+    .section { margin-bottom: 16px; overflow: hidden; background: #182220; border: 1px solid var(--line); border-radius: var(--radius); scroll-margin-top: 16px; }
+    .section-head { display: flex; align-items: center; gap: 12px; padding: 16px 19px; background: linear-gradient(90deg, #24312c, #1b2624); border-bottom: 1px solid var(--line); }
+    .phase-no { display: grid; flex: 0 0 34px; place-items: center; height: 34px; color: var(--gold); background: var(--gold-soft); border: 1px solid #655127; border-radius: 10px; font-size: .78rem; font-weight: 800; }
+    .section h2 { margin: 0; font-size: 1.12rem; }
+    .section-note { margin-left: auto; color: var(--muted); font-size: .78rem; }
+    .items { padding: 6px 18px 11px; }
+    .item { display: grid; grid-template-columns: 23px minmax(0, 1fr); gap: 12px; padding: 13px 2px; border-bottom: 1px solid #2c3935; cursor: pointer; }
+    .item:last-child { border-bottom: 0; }
+    .item input { width: 19px; height: 19px; margin: 3px 0 0; accent-color: var(--gold); cursor: pointer; }
+    .item-copy { min-width: 0; }
+    .item-title { display: block; font-weight: 700; }
+    .item-detail { display: block; margin-top: 3px; color: #b4c0b7; font-size: .9rem; }
+    .item:has(input:checked) .item-title { color: #94a39a; text-decoration: line-through; text-decoration-color: #67776b; }
+    .badge { display: inline-block; margin: 0 5px 2px 0; padding: 1px 7px; color: var(--gold); background: #342e1e; border: 1px solid #655127; border-radius: 99px; font-size: .7rem; font-weight: 750; vertical-align: 1px; }
+    .badge.purple { color: #c5b6e8; background: #2c2738; border-color: #504467; }
+    .badge.red { color: #f1a28e; background: #3a2724; border-color: #70423a; }
+    details { margin: 18px 0; background: #172120; border: 1px solid var(--line); border-radius: var(--radius); }
+    summary { padding: 15px 18px; color: var(--gold); font-weight: 750; cursor: pointer; }
+    details .items { padding-top: 0; }
+    .foot { margin-top: 26px; padding-top: 16px; color: var(--muted); border-top: 1px solid var(--line); font-size: .82rem; }
+    .foot a { color: #d4b660; }
+    .saved { color: var(--green); font-size: .82rem; white-space: nowrap; }
+    @media (max-width: 760px) {
+      .shell { padding: 18px 15px 55px; }
+      header { padding-top: 26px; }
+      .progress-panel { grid-template-columns: 1fr; gap: 13px; }
+      .reset { justify-self: start; }
+      .layout { grid-template-columns: 1fr; }
+      aside { position: static; overflow-x: auto; padding: 10px; }
+      .aside-title { margin: 2px 7px 7px; }
+      nav { display: flex; width: max-content; }
+      nav a { white-space: nowrap; }
+      .section-note { display: none; }
+      .section-head { padding: 14px; }
+      .items { padding: 4px 13px 8px; }
+      .item { gap: 10px; padding: 12px 0; }
+    }
+    @media print {
+      :root { color-scheme: light; --ink: #17201d; --muted: #4b5b53; --bg: white; --panel: white; --line: #b7c0ba; }
+      body { color: #17201d; background: white; }
+      .shell { max-width: none; padding: 0; }
+      .topline, aside, .progress-panel, .foot a { display: none; }
+      header { padding: 0 0 12px; }
+      h1 { font-size: 28pt; }
+      .intro, .item-detail { color: #34433b; }
+      .layout { display: block; }
+      .section, details { break-inside: avoid; background: white; border-color: #aab3ad; }
+      .section-head { padding: 8px 12px; background: #edf0e9; }
+      .items { padding: 3px 12px; }
+      .item { padding: 7px 0; }
+      .item-title, .section h2 { color: #17201d; }
+      .badge { color: #544018; background: #f3eddc; border-color: #b6a16b; }
+      details:not([open]) > :not(summary) { display: block; }
+      details summary { color: #17201d; padding: 8px 12px; }
+      .foot { color: #34433b; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <div class="topline">
+      <div class="mark"><span class="mark-icon">IF</span><span>Battle companion · Incursion</span></div>
+      <span>Roster v995</span>
+    </div>
+    <header>
+      <div class="eyebrow">IMPERIAL FISTS · 1,000 POINTS</div>
+      <h1>戦闘チェックリスト</h1>
+      <p class="intro">能力を使うタイミングで確認。チェックはこのブラウザーに自動保存されます。戦闘ごとに「リセット」して使えます。</p>
+      <div class="chips"><span class="chip"><strong>2 DP</strong> アサルト同胞団＋タクティカス攻撃部隊</span><span class="chip">奪取と確保</span><span class="chip">インカージョン</span></div>
+    </header>
+    <div class="progress-panel" aria-label="チェック進捗">
+      <div><div class="progress-label"><span>この戦闘の進捗</span><span id="progressText">0 / 0</span></div><div class="bar" role="progressbar" aria-label="チェック完了率" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="bar-fill" id="progressFill"></div></div></div>
+      <button class="reset" id="resetButton" type="button">チェックをリセット</button>
+      <span class="saved" id="savedStatus" aria-live="polite">自動保存</span>
+    </div>
+    <div class="layout">
+      <aside><p class="aside-title">フェイズへ移動</p><nav>
+        <a href="#before">戦闘開始前</a><a href="#command">指揮</a><a href="#movement">移動</a><a href="#shooting">射撃</a><a href="#fight">白兵戦</a><a href="#opponent">相手ターン</a><a href="#passive">常時・条件付き</a><a href="#stratagems">策略早見</a>
+      </nav></aside>
+      <main class="content">
+        <section class="section" id="before"><div class="section-head"><span class="phase-no">準備</span><h2>戦闘開始前</h2><span class="section-note">配置前／バトル開始時</span></div><div class="items">
+          <label class="item"><input type="checkbox"><span class="item-copy"><span class="item-title">テレポート・ホーマーを置く</span><span class="item-detail"><span class="badge">ターミネイター</span>使う場合はトークンを戦場に配置（1戦闘につき1回）。敵が1インチ以内で移動を終えるとトークンは取り除かれる。</span></span></label>
+          <label class="item"><input type="checkbox"><span class="item-copy"><span class="item-title">ターミネイターの到着方法を決める</span><span class="item-detail"><span class="badge">ディープストライク</span>予備戦力から配置する場合、後でホーマーを使った「緊急降下」を狙う位置も意識。</span></span></label>
+        </div></section>
+
+        <section class="section" id="command"><div class="section-head"><span class="phase-no">01</span><h2>自分の指揮フェイズ</h2><span class="section-note">バトルラウンド開始時</span></div><div class="items">
+          <label class="item"><input type="checkbox"><span class="item-copy"><span class="item-title">ウォーロードのキャプテンでCPを得る</span><span class="item-detail"><span class="badge">超人戦術家</span>ウォーロードが戦場にいるかにかかわらず、バトルラウンド開始時に+1CP。</span></span></label>
+          <label class="item"><input type="checkbox"><span class="item-copy"><span class="item-title">コンバット・ドクトリンを選ぶ</span><span class="item-detail"><span class="badge">自軍指揮フェイズ開始時</span>アサルト＝進軍後も突撃可能／デヴァステイター＝射撃にアサルト／タクティカル＝退却後も射撃・突撃可能。各ドクトリンは通常1戦闘1回。</span></span></label>
+          <label class="item"><input type="checkbox"><span class="item-copy"><span class="item-title">キャプテンのユニットにドクトリンを適用する</span><span class="item-detail"><span class="badge">戦略的機動</span>キャプテンの合流ユニットにドクトリンを選ぶ。アサルト同胞団はアサルト・ドクトリンを追加でもう1回選べる。</span></span></label>
+          <label class="item"><input type="checkbox"><span class="item-copy"><span class="item-title">レフテナントのユニットにも同じドクトリンを適用する</span><span class="item-detail"><span class="badge">中隊指揮官</span>キャプテンが「戦略的機動」を使ったとき、レフテナントの合流ユニットにも同じドクトリンを適用できる。</span></span></label>
+          <label class="item"><input type="checkbox"><span class="item-copy"><span class="item-title">アポセカリーで負傷を回復する</span><span class="item-detail"><span class="badge">ナルテシウム</span>合流ユニットに負傷モデルがいるならD3+1点回復。破壊されたモデルは戻らない。</span></span></label>
+        </div></section>
+
+        <section class="section" id="movement"><div class="section-head"><span class="phase-no">02</span><h2>移動フェイズ</h2><span class="section-note">進軍／降車の判断時</span></div><div class="items">
+          <label class="item"><input type="checkbox"><span class="item-copy"><span class="item-title">タクティカスの進軍ロールを振り直す</span><span class="item-detail"><span class="badge purple">タクティカス攻撃部隊</span>ブレイドガード、アサルト・インターセッサー、インターセッサーの合流ユニットが対象。</span></span></label>
+          <label class="item"><input type="checkbox"><span class="item-copy"><span class="item-title">ライブラリアンのサイキック能力を選ぶ</span><span class="item-detail"><span class="badge">時のヴェール</span>進軍を選んだ時、サイキック判定に成功すれば進軍ロールを6に変更。1が出ると戦闘ショック。</span></span></label>
+          <label class="item"><input type="checkbox"><span class="item-copy"><span class="item-title">またはフォース・ドームを使う</span><span class="item-detail"><span class="badge">移動フェイズ中</span>サイキック判定に成功すれば次の自分のターン開始まで4+スペシャルセーヴ。1が出ると戦闘ショック。ライブラリアンはサイキックレベル1なので、このラウンドは時のヴェールとどちらか一方。</span></span></label>
+          <label class="item"><input type="checkbox"><span class="item-copy"><span class="item-title">インパルサーが進軍を終えたら降車を検討</span><span class="item-detail"><span class="badge">急速降車</span>搭乗ユニットは衝撃降車を行える。インパルサーは最大7体のアデプトゥス・アスタルテス歩兵を輸送（ターミネイター不可）。</span></span></label>
+        </div></section>
+
+        <section class="section" id="shooting"><div class="section-head"><span class="phase-no">03</span><h2>射撃フェイズ</h2><span class="section-note">攻撃ユニットを選ぶ時</span></div><div class="items">
+          <label class="item"><input type="checkbox"><span class="item-copy"><span class="item-title">インターセッサーのボルター規律を確認</span><span class="item-detail"><span class="badge">命中+1</span>自ユニットか射撃対象が目標マーカー範囲内なら、射撃攻撃の命中+1。</span></span></label>
+          <label class="item"><input type="checkbox"><span class="item-copy"><span class="item-title">エラディケイターのダメージロールを振り直す</span><span class="item-detail"><span class="badge">完全殲滅</span>メルタライフルを含む、このユニットの射撃攻撃のダメージロールが対象。</span></span></label>
+          <label class="item"><input type="checkbox"><span class="item-copy"><span class="item-title">タクティカスが攻撃するなら策略を検討</span><span class="item-detail"><span class="badge purple">猛烈な突撃・1CP</span>攻撃対象に選ばれた時に使用。通常の敵には連続命中1、モンスター／ビークルには致命的命中。</span></span></label>
+          <label class="item"><input type="checkbox"><span class="item-copy"><span class="item-title">インパルサーの射撃デッキを使うか確認</span><span class="item-detail"><span class="badge">射撃デッキ7</span>搭乗中の歩兵モデルの射撃武器をインパルサーの射撃に使えるか確認。</span></span></label>
+          <label class="item"><input type="checkbox"><span class="item-copy"><span class="item-title">ライブラリアンの猛撃を使うなら射撃プロフィールを選ぶ</span><span class="item-detail"><span class="badge">サイキック武器</span>通常か収束を選択。収束は危険と致命的な傷付き。</span></span></label>
+        </div></section>
+
+        <section class="section" id="fight"><div class="section-head"><span class="phase-no">04</span><h2>突撃・白兵戦フェイズ</h2><span class="section-note">突撃後／攻撃ユニット選択時</span></div><div class="items">
+          <label class="item"><input type="checkbox"><span class="item-copy"><span class="item-title">アサルト・インターセッサーが突撃後に強化される</span><span class="item-detail"><span class="badge">目標指定の突撃</span>このターンに突撃移動していれば、白兵戦の筋力+1、貫通+1。</span></span></label>
+          <label class="item"><input type="checkbox"><span class="item-copy"><span class="item-title">熾烈な強襲の連続命中1を適用</span><span class="item-detail"><span class="badge">アップグレード</span>キャプテンのブレイドガード合流ユニットと、レフテナントのアサルト・インターセッサー合流ユニット。対象外の敵（モンスター／ビークル以外）への白兵戦攻撃に常時適用。</span></span></label>
+          <label class="item"><input type="checkbox"><span class="item-copy"><span class="item-title">ブレイドガードの選択能力を使う</span><span class="item-detail"><span class="badge">1ターンに1回</span>このユニットが白兵戦を行うため選ばれた時は命中+1、敵の攻撃対象になった時はその攻撃の命中-1。どちらか一方を選択。</span></span></label>
+          <label class="item"><input type="checkbox"><span class="item-copy"><span class="item-title">キャプテンの最後の奮戦を使う</span><span class="item-detail"><span class="badge">1戦闘に1回</span>このユニットが白兵戦を行うため選ばれた時、キャプテン本人の攻撃回数+3、致命的な傷。</span></span></label>
+          <label class="item"><input type="checkbox"><span class="item-copy"><span class="item-title">策略：遺伝子改造の力</span><span class="item-detail"><span class="badge">1CP</span>味方アスタルテスが白兵戦を行うため選ばれた時。「突撃槍」を付与。アサルト・ドクトリン中なら貫通+1も付与。</span></span></label>
+          <label class="item"><input type="checkbox"><span class="item-copy"><span class="item-title">敵が戦い終えたら、超人の俊敏さを検討</span><span class="item-detail"><span class="badge purple">1CP</span>目標マーカー範囲内で白兵戦可能なタクティカスを選択。「先手」を得て、次に戦うユニットとして選ぶ。</span></span></label>
+          <label class="item"><input type="checkbox"><span class="item-copy"><span class="item-title">再編移動を延ばすなら戦術的集中</span><span class="item-detail"><span class="badge purple">1CP</span>タクティカスが再編移動のため選ばれた時、移動距離を最大D3+3インチにする。</span></span></label>
+        </div></section>
+
+        <section class="section" id="opponent"><div class="section-head"><span class="phase-no">相手</span><h2>相手の射撃・白兵戦フェイズ</h2><span class="section-note">敵が攻撃対象を選んだ時</span></div><div class="items">
+          <label class="item"><input type="checkbox"><span class="item-copy"><span class="item-title">策略：皇帝の鎧</span><span class="item-detail"><span class="badge">1CP</span>敵が味方アスタルテスを攻撃対象にした時、射撃または白兵戦で使用。その敵ユニットの攻撃終了まで、攻撃の貫通-1。</span></span></label>
+          <label class="item"><input type="checkbox"><span class="item-copy"><span class="item-title">白兵戦でモデルが倒されたら策略を確認</span><span class="item-detail"><span class="badge">死してなお任務を・1CP</span>相手の白兵戦で敵が味方アスタルテスを攻撃対象にした時に使用。まだ戦っていないユニットのモデルが破壊されたらD6判定（アサルト・ドクトリン中は+1）。4+で自ユニットが戦うまで、またはフェイズ終了まで残す。</span></span></label>
+        </div></section>
+
+        <section class="section" id="passive"><div class="section-head"><span class="phase-no">常時</span><h2>常時・条件を満たした時</h2><span class="section-note">該当する場面で思い出す</span></div><div class="items">
+          <label class="item"><input type="checkbox"><span class="item-copy"><span class="item-title">レフテナントの戦術的精密射撃</span><span class="item-detail">レフテナントの合流ユニットの攻撃は、モンスター／ビークル以外に致命的命中。</span></span></label>
+          <label class="item"><input type="checkbox"><span class="item-copy"><span class="item-title">ターミネイターは9インチ以内の対象に貫通+1</span><span class="item-detail">「先駆者の猛威」は射撃・白兵戦どちらの攻撃にも適用。</span></span></label>
+          <label class="item"><input type="checkbox"><span class="item-copy"><span class="item-title">ライブラリアンはサイキック攻撃に痛みを知らぬ者4+</span><span class="item-detail">「サイキックフード」による防御。ライブラリアンの合流ユニットに適用。</span></span></label>
+          <label class="item"><input type="checkbox"><span class="item-copy"><span class="item-title">インパルサーはシールドドームで5+スペシャルセーヴ</span><span class="item-detail">常時適用。破壊された時は「致命的破壊D3」も処理。</span></span></label>
+          <label class="item"><input type="checkbox"><span class="item-copy"><span class="item-title">インターセッサーは任務中も射撃可能</span><span class="item-detail">「戦術的主力」により、アクション開始後も射撃可能。交戦中または戦闘ショック中でもアクション開始の適格性を失わない。</span></span></label>
+        </div></section>
+
+        <details id="stratagems"><summary>デタッチメント策略早見（全6種）</summary><div class="items">
+          <div class="item"><span class="phase-no">1CP</span><span class="item-copy"><span class="item-title">皇帝の鎧 <span class="badge red">アサルト同胞団</span></span><span class="item-detail">相手の射撃／白兵戦フェイズ、敵が味方アスタルテスを攻撃対象にした時。攻撃の貫通-1。</span></span></div>
+          <div class="item"><span class="phase-no">1CP</span><span class="item-copy"><span class="item-title">遺伝子改造の力 <span class="badge red">アサルト同胞団</span></span><span class="item-detail">自分の白兵戦フェイズ、味方アスタルテスが戦うため選ばれた時。突撃槍。アサルト・ドクトリン中は貫通+1。</span></span></div>
+          <div class="item"><span class="phase-no">1CP</span><span class="item-copy"><span class="item-title">死してなお任務を <span class="badge red">アサルト同胞団</span></span><span class="item-detail">相手の白兵戦フェイズ、敵が味方アスタルテスを攻撃対象にした時。まだ戦っていないユニットのモデルが倒された際に残留判定。</span></span></div>
+          <div class="item"><span class="phase-no">1CP</span><span class="item-copy"><span class="item-title">猛烈な突撃 <span class="badge purple">タクティカス攻撃部隊</span></span><span class="item-detail">射撃／白兵戦フェイズ、タクティカスが攻撃対象に選ばれた時。通常対象には連続命中1、モンスター／ビークルには致命的命中。</span></span></div>
+          <div class="item"><span class="phase-no">1CP</span><span class="item-copy"><span class="item-title">超人の俊敏さ <span class="badge purple">タクティカス攻撃部隊</span></span><span class="item-detail">白兵戦フェイズ、敵ユニットが戦い終えた時。目標範囲内で戦えるタクティカスが「先手」を得て次に戦う。</span></span></div>
+          <div class="item"><span class="phase-no">1CP</span><span class="item-copy"><span class="item-title">戦術的集中 <span class="badge purple">タクティカス攻撃部隊</span></span><span class="item-detail">白兵戦フェイズ、タクティカスが再編移動を行うため選ばれた時。移動距離を最大D3+3インチにする。</span></span></div>
+        </div></details>
+
+        <div class="foot">チェック状態は端末内に保存されます。共有リンクにチェック状態は含まれません。ルール参照：<a href="https://wahapedia.ru/wh40k11ed/factions/space-marines/no-supplements" target="_blank" rel="noreferrer">Space Marines 11th edition</a> · <a href="https://www.warhammer-community.com/en-gb/articles/zcobdkzh/your-first-look-at-15-new-space-marine-detachments/" target="_blank" rel="noreferrer">Warhammer Community</a></div>
+      </main>
+    </div>
+  </div>
+  <script>
+    (() => {
+      const storageKey = 'imperial-fists-1000-checklist-v1';
+      const boxes = [...document.querySelectorAll('.item input[type="checkbox"]')];
+      const fill = document.getElementById('progressFill');
+      const text = document.getElementById('progressText');
+      const bar = document.querySelector('[role="progressbar"]');
+      const status = document.getElementById('savedStatus');
+      const render = () => {
+        const done = boxes.filter(box => box.checked).length;
+        const percent = boxes.length ? Math.round(done / boxes.length * 100) : 0;
+        text.textContent = `${done} / ${boxes.length}`;
+        fill.style.width = `${percent}%`;
+        bar.setAttribute('aria-valuenow', String(percent));
+      };
+      try {
+        const saved = JSON.parse(localStorage.getItem(storageKey) || '[]');
+        boxes.forEach((box, index) => { box.checked = saved[index] === true; });
+      } catch (_) { /* Storage may be disabled; the checklist still works for this page view. */ }
+      render();
+      boxes.forEach(box => box.addEventListener('change', () => {
+        render();
+        try { localStorage.setItem(storageKey, JSON.stringify(boxes.map(item => item.checked))); status.textContent = '保存しました'; }
+        catch (_) { status.textContent = 'このブラウザーでは保存できません'; }
+        window.setTimeout(() => { status.textContent = '自動保存'; }, 1400);
+      }));
+      document.getElementById('resetButton').addEventListener('click', () => {
+        boxes.forEach(box => { box.checked = false; });
+        render();
+        try { localStorage.removeItem(storageKey); status.textContent = 'リセットしました'; }
+        catch (_) { status.textContent = 'リセットしました'; }
+      });
+    })();
+  </script>
+</body>
+</html>
+
