@@ -73,6 +73,8 @@
     .badge.purple { color: #c5b6e8; background: #2c2738; border-color: #504467; }
     .badge.red { color: #f1a28e; background: #3a2724; border-color: #70423a; }
     .doctrine-item { grid-template-columns: minmax(0, 1fr); cursor: default; }
+    .doctrine-apply { display: flex; align-items: center; gap: 9px; cursor: pointer; }
+    .doctrine-apply input { flex: 0 0 auto; width: 19px; height: 19px; margin: 0; accent-color: var(--gold); }
     .doctrine-choices { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 12px; }
     .doctrine-choice { display: flex; align-items: flex-start; gap: 8px; padding: 10px; background: #202b29; border: 1px solid var(--line); border-radius: 12px; cursor: pointer; }
     .doctrine-choice input { flex: 0 0 auto; width: 18px; height: 18px; margin: 2px 0 0; accent-color: var(--gold); }
@@ -163,8 +165,12 @@
             <label class="doctrine-choice"><input type="checkbox" data-check-id="doctrine-devastator"><span>撃滅ドクトリン<br><small>射撃武器にアサルト</small></span></label>
             <label class="doctrine-choice"><input type="checkbox" data-check-id="doctrine-tactical"><span>戦術ドクトリン<br><small>退却後も射撃・突撃可能</small></span></label>
           </div><span class="doctrine-note">通常の強襲ドクトリンと、アサルト同胞団の追加使用は別々に記録できます。</span></div></div>
-          <label class="item" data-unit="キャプテン＋ブレイドガード・ベテラン・スカッド"><input type="checkbox"><span class="item-copy"><span class="item-title">合流ユニットにドクトリンを適用</span><span class="item-unit">対象ユニット：キャプテン＋ブレイドガード・ベテラン・スカッド</span><span class="item-detail"><span class="badge">戦略的機動</span>選んだドクトリンを適用。</span></span></label>
-          <label class="item" data-unit="レフテナント＋アサルト・インターセッサー・スカッド"><input type="checkbox"><span class="item-copy"><span class="item-title">他の合流ユニットにも同じドクトリンを適用</span><span class="item-unit">対象ユニット：レフテナント＋アサルト・インターセッサー・スカッド</span><span class="item-detail"><span class="badge">中隊指揮官</span>「戦略的機動」を使った時、同じドクトリンを適用できる。</span></span></label>
+          <div class="item doctrine-item" data-unit="キャプテン＋ブレイドガード・ベテラン・スカッド"><div class="item-copy"><label class="doctrine-apply"><input type="checkbox"><span class="item-title">合流ユニットにドクトリンを適用</span></label><span class="item-unit">対象ユニット：キャプテン＋ブレイドガード・ベテラン・スカッド</span><span class="item-detail"><span class="badge">戦略的機動</span>適用するドクトリンを1つ選択。</span><div class="doctrine-choices" role="radiogroup" aria-label="キャプテンの合流ユニットに適用するドクトリン">
+            <label class="doctrine-choice"><input type="radio" name="captain-doctrine" data-check-id="choice-captain-doctrine-assault"><span>強襲ドクトリン<br><small>進軍後も突撃可能</small></span></label>
+            <label class="doctrine-choice"><input type="radio" name="captain-doctrine" data-check-id="choice-captain-doctrine-devastator"><span>撃滅ドクトリン<br><small>射撃武器にアサルト</small></span></label>
+            <label class="doctrine-choice"><input type="radio" name="captain-doctrine" data-check-id="choice-captain-doctrine-tactical"><span>戦術ドクトリン<br><small>退却後も射撃・突撃可能</small></span></label>
+          </div></div></div>
+          <label class="item" data-unit="レフテナント＋アサルト・インターセッサー・スカッド"><input type="checkbox"><span class="item-copy"><span class="item-title">他の合流ユニットにも同じドクトリンを適用</span><span class="item-unit">対象ユニット：レフテナント＋アサルト・インターセッサー・スカッド</span><span class="item-detail"><span class="badge">中隊指揮官</span>「戦略的機動」を使った時、キャプテン側で選んだドクトリンを適用できます。</span><span class="doctrine-note" id="sharedDoctrineContent" aria-live="polite">適用するドクトリン：未選択</span></span></label>
           <label class="item" data-unit="アポセカリー＋ブレイドガード・ベテラン・スカッド"><input type="checkbox"><span class="item-copy"><span class="item-title">負傷モデルを回復する</span><span class="item-unit">対象ユニット：アポセカリーの合流ユニット</span><span class="item-detail"><span class="badge">ナルテシウム</span>負傷モデルがいればD3+1点回復。破壊されたモデルは戻らない。</span></span></label>
         </div></section>
 
@@ -250,6 +256,17 @@
       const status = document.getElementById('savedStatus');
       const bladeguardHitMinusChoice = document.querySelector('[data-check-id="round-bladeguard-defend"]');
       const bladeguardHitMinusReminder = document.getElementById('bladeguardHitMinusReminder');
+      const captainDoctrineChoices = [...document.querySelectorAll('input[name="captain-doctrine"]')];
+      const sharedDoctrineContent = document.getElementById('sharedDoctrineContent');
+      const doctrineEffects = {
+        'choice-captain-doctrine-assault': '強襲ドクトリン：進軍後も突撃可能',
+        'choice-captain-doctrine-devastator': '撃滅ドクトリン：射撃武器にアサルト',
+        'choice-captain-doctrine-tactical': '戦術ドクトリン：退却後も射撃・突撃可能'
+      };
+      const syncSharedDoctrine = () => {
+        const selected = captainDoctrineChoices.find(box => box.checked);
+        sharedDoctrineContent.textContent = selected ? `適用するドクトリン：${doctrineEffects[checkId(selected)]}` : '適用するドクトリン：未選択';
+      };
       const syncBladeguardHitMinusReminder = () => {
         const selected = bladeguardHitMinusChoice.checked;
         bladeguardHitMinusReminder.hidden = !selected;
@@ -292,21 +309,25 @@
         }
       } catch (_) { /* Storage may be disabled; the checklist still works for this page view. */ }
       syncBladeguardHitMinusReminder();
+      syncSharedDoctrine();
       render();
       boxes.forEach(box => box.addEventListener('change', () => {
         syncBladeguardHitMinusReminder();
+        syncSharedDoctrine();
         render();
         save();
         window.setTimeout(() => { status.textContent = '自動保存'; }, 1400);
       }));
       document.getElementById('nextRoundButton').addEventListener('click', () => {
-        boxes.filter(box => !box.dataset.checkId?.startsWith('before-') && !box.dataset.checkId?.startsWith('doctrine-') && !box.dataset.checkId?.startsWith('choice-librarian-') && box.dataset.checkId !== 'battle-captain-last-stand').forEach(box => { box.checked = false; });
+        boxes.filter(box => !box.dataset.checkId?.startsWith('before-') && !box.dataset.checkId?.startsWith('doctrine-') && !box.dataset.checkId?.startsWith('choice-librarian-') && !box.dataset.checkId?.startsWith('choice-captain-doctrine-') && box.dataset.checkId !== 'battle-captain-last-stand').forEach(box => { box.checked = false; });
         syncBladeguardHitMinusReminder();
+        syncSharedDoctrine();
         render(); save(); status.textContent = '次のラウンド用にリセットしました';
       });
       document.getElementById('resetButton').addEventListener('click', () => {
         boxes.forEach(box => { box.checked = false; });
         syncBladeguardHitMinusReminder();
+        syncSharedDoctrine();
         render();
         try { localStorage.removeItem(storageKey); localStorage.removeItem(legacyStorageKey); status.textContent = '全チェックをリセットしました'; }
         catch (_) { status.textContent = 'リセットしました'; }
