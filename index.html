@@ -181,6 +181,8 @@
           <label class="item" data-unit="エラディケイター・スカッド"><input type="checkbox"><span class="item-copy"><span class="item-title">ダメージロールを振り直す</span><span class="item-unit">対象ユニット：エラディケイター・スカッド</span><span class="item-detail"><span class="badge">完全殲滅</span>メルタライフルを含む、このユニットの射撃攻撃のダメージロールが対象。</span></span></label>
           <label class="item" data-unit="インパルサー"><input type="checkbox"><span class="item-copy"><span class="item-title">射撃デッキを使うか確認</span><span class="item-unit">対象ユニット：インパルサー＋搭乗中の歩兵</span><span class="item-detail"><span class="badge">射撃デッキ7</span>搭乗中の歩兵モデルの射撃武器を車両の射撃に使えるか確認。</span></span></label>
           <label class="item" data-unit="ライブラリアン＋インターセッサー・スカッド"><input type="checkbox"><span class="item-copy"><span class="item-title">「猛撃」の射撃プロフィールを選ぶ</span><span class="item-unit">対象ユニット：ライブラリアン</span><span class="item-detail"><span class="badge">サイキック武器</span>通常か収束を選択。収束は危険と致命的な傷付き。</span></span></label>
+          <label class="item" data-unit="レフテナント＋アサルト・インターセッサー・スカッド"><input type="checkbox"><span class="item-copy"><span class="item-title">戦術的精密射撃を適用</span><span class="item-unit">対象ユニット：レフテナント＋アサルト・インターセッサー・スカッド</span><span class="item-detail">モンスター／ビークル以外への射撃攻撃は致命的命中。</span></span></label>
+          <label class="item" data-unit="ターミネイター・スカッド"><input type="checkbox"><span class="item-copy"><span class="item-title">9インチ以内の対象に貫通+1</span><span class="item-unit">対象ユニット：ターミネイター・スカッド</span><span class="item-detail">「先駆者の猛威」により、9インチ以内の対象への射撃攻撃の貫通+1。</span></span></label>
         </div></section>
 
         <section class="section" id="fight"><div class="section-head"><span class="phase-no">04</span><h2>突撃・白兵戦フェイズ</h2><span class="section-note">突撃後／攻撃ユニット選択時</span></div><div class="items">
@@ -190,20 +192,20 @@
             <label class="doctrine-choice"><input type="radio" name="bladeguard-ability" data-check-id="round-bladeguard-fight"><span>このユニットの攻撃の命中+1</span></label>
             <label class="doctrine-choice"><input type="radio" name="bladeguard-ability" data-check-id="round-bladeguard-defend"><span>このユニットを対象にした攻撃のヒットロール−1</span></label>
           </div></div></div>
+          <label class="item" data-unit="レフテナント＋アサルト・インターセッサー・スカッド"><input type="checkbox"><span class="item-copy"><span class="item-title">戦術的精密射撃を適用</span><span class="item-unit">対象ユニット：レフテナント＋アサルト・インターセッサー・スカッド</span><span class="item-detail">モンスター／ビークル以外への白兵戦攻撃は致命的命中。</span></span></label>
+          <label class="item" data-unit="ターミネイター・スカッド"><input type="checkbox"><span class="item-copy"><span class="item-title">9インチ以内の対象に貫通+1</span><span class="item-unit">対象ユニット：ターミネイター・スカッド</span><span class="item-detail">「先駆者の猛威」により、9インチ以内の対象への白兵戦攻撃の貫通+1。</span></span></label>
           <label class="item" data-unit="キャプテン＋ブレイドガード・ベテラン・スカッド"><input type="checkbox" data-check-id="battle-captain-last-stand"><span class="item-copy"><span class="item-title">最後の奮戦を使う</span><span class="item-unit">対象ユニット：キャプテン＋ブレイドガード・ベテラン・スカッド</span><span class="item-detail"><span class="badge">1戦闘に1回</span>白兵戦を行う時、指揮官モデルの攻撃回数+3、致命的な傷。使用済みチェックはラウンドをまたいで保持。</span></span></label>
         </div></section>
 
         <section class="section" id="opponent"><div class="section-head"><span class="phase-no">相手</span><h2>相手の射撃・白兵戦フェイズ</h2><span class="section-note">敵が攻撃対象を選んだ時</span></div><div class="items">
           <div class="item" data-unit="攻撃対象になった味方アスタルテス"><span class="item-copy"><span class="item-title">相手の攻撃対象を見て策略を検討</span><span class="item-unit">対象ユニット：攻撃対象になった味方アスタルテス</span><span class="item-detail">「皇帝の鎧」を使えるタイミングです。詳細はデタッチメント策略欄を確認。</span></span></div>
           <label class="item" id="bladeguardHitMinusReminder" data-unit="キャプテン＋ブレイドガード・ベテラン・スカッド" hidden><input type="checkbox" data-check-id="round-bladeguard-hit-minus"><span class="item-copy"><span class="item-title">このユニットを対象にした攻撃のヒットロール−1を適用</span><span class="item-unit">対象ユニット：キャプテン＋ブレイドガード・ベテラン・スカッド</span><span class="item-detail">敵ユニットがこのユニットを攻撃対象に選んだ時にチェック。</span></span></label>
+          <label class="item" data-unit="ライブラリアン＋インターセッサー・スカッド"><input type="checkbox"><span class="item-copy"><span class="item-title">サイキック攻撃に痛みを知らぬ者4+</span><span class="item-unit">対象ユニット：ライブラリアン＋インターセッサー・スカッド</span><span class="item-detail">「サイキックフード」による防御。サイキック攻撃でダメージを受ける時に適用。</span></span></label>
+          <label class="item" data-unit="インパルサー"><input type="checkbox"><span class="item-copy"><span class="item-title">シールドドームの5+スペシャルセーヴ</span><span class="item-unit">対象ユニット：インパルサー</span><span class="item-detail">攻撃によるダメージを受ける時に5+スペシャルセーヴを適用。破壊された時は「致命的破壊D3」も処理。</span></span></label>
           <div class="item" data-unit="まだ白兵戦を行っていない味方アスタルテス"><span class="item-copy"><span class="item-title">白兵戦でモデルが倒されたら策略を確認</span><span class="item-unit">対象ユニット：まだ白兵戦を行っていない味方アスタルテス</span><span class="item-detail">「死してなお任務を」を使えるタイミングです。詳細はデタッチメント策略欄を確認。</span></span></div>
         </div></section>
 
         <section class="section" id="passive"><div class="section-head"><span class="phase-no">常時</span><h2>常時・条件を満たした時</h2><span class="section-note">該当する場面で思い出す</span></div><div class="items">
-          <label class="item" data-unit="レフテナント＋アサルト・インターセッサー・スカッド"><input type="checkbox"><span class="item-copy"><span class="item-title">戦術的精密射撃を適用</span><span class="item-unit">対象ユニット：レフテナントの合流ユニット</span><span class="item-detail">モンスター／ビークル以外への攻撃は致命的命中。</span></span></label>
-          <label class="item" data-unit="ターミネイター・スカッド"><input type="checkbox"><span class="item-copy"><span class="item-title">9インチ以内の対象に貫通+1</span><span class="item-unit">対象ユニット：ターミネイター・スカッド</span><span class="item-detail">「先駆者の猛威」は射撃・白兵戦どちらの攻撃にも適用。</span></span></label>
-          <label class="item" data-unit="ライブラリアン＋インターセッサー・スカッド"><input type="checkbox"><span class="item-copy"><span class="item-title">サイキック攻撃に痛みを知らぬ者4+</span><span class="item-unit">対象ユニット：ライブラリアンの合流ユニット</span><span class="item-detail">「サイキックフード」による防御。</span></span></label>
-          <label class="item" data-unit="インパルサー"><input type="checkbox"><span class="item-copy"><span class="item-title">シールドドームの5+スペシャルセーヴ</span><span class="item-unit">対象ユニット：インパルサー</span><span class="item-detail">常時適用。破壊された時は「致命的破壊D3」も処理。</span></span></label>
           <label class="item" data-unit="インターセッサー・スカッド"><input type="checkbox"><span class="item-copy"><span class="item-title">任務中も射撃可能</span><span class="item-unit">対象ユニット：インターセッサー・スカッド</span><span class="item-detail">「戦術的主力」により、アクション開始後も射撃可能。交戦中または戦闘ショック中でもアクション開始の適格性を失わない。</span></span></label>
         </div></section>
 
