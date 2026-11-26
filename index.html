@@ -149,7 +149,7 @@
     </div>
     <div class="layout">
       <aside><p class="aside-title">フェイズへ移動</p><nav>
-        <a href="#before">戦闘開始前</a><a href="#command">指揮</a><a href="#movement">移動</a><a href="#shooting">射撃</a><a href="#fight">白兵戦</a><a href="#opponent">相手ターン</a><a href="#passive">常時・条件付き</a><a href="#stratagems">デタッチメント策略</a>
+        <a href="#before">戦闘開始前</a><a href="#command">指揮</a><a href="#movement">移動</a><a href="#shooting">射撃</a><a href="#fight">白兵戦</a><a href="#opponent">敵軍側ターン</a><a href="#passive">常時・条件付き</a><a href="#stratagems">デタッチメント策略</a>
       </nav></aside>
       <main class="content">
         <section class="section" id="before"><div class="section-head"><span class="phase-no">準備</span><h2>戦闘開始前</h2><span class="section-note">配置前／バトル開始時</span></div><div class="items">
@@ -157,76 +157,76 @@
           <label class="item" data-unit="ターミネイター・スカッド"><input type="checkbox" data-check-id="before-arrival-plan"><span class="item-copy"><span class="item-title">到着方法を決める</span><span class="item-unit">対象ユニット：ターミネイター・スカッド</span><span class="item-detail"><span class="badge">ディープストライク</span>予備戦力から配置する場合、後でホーマーを使った「緊急降下」を狙う位置も意識。</span></span></label>
         </div></section>
 
-        <section class="section" id="command"><div class="section-head"><span class="phase-no">01</span><h2>自分の指揮フェイズ</h2><span class="section-note">バトルラウンド開始時</span></div><div class="items">
+        <section class="section" id="command"><div class="section-head"><span class="phase-no">01</span><h2>自軍側指揮フェイズ</h2><span class="section-note">バトルラウンド開始時</span></div><div class="items">
           <label class="item" data-unit="キャプテン"><input type="checkbox"><span class="item-copy"><span class="item-title">ウォーロードのCP獲得を確認</span><span class="item-unit">対象ユニット：キャプテン（ウォーロード）</span><span class="item-detail"><span class="badge">超人戦術家</span>バトルラウンド開始時に+1CP。戦場にいる必要はない。</span></span></label>
           <div class="item doctrine-item"><div class="item-copy"><span class="item-title">戦闘ドクトリンを選ぶ</span><span class="item-unit">対象ユニット：スペースマリーン全軍</span><span class="item-detail"><span class="badge">自軍指揮フェイズ開始時</span>各ドクトリンは1戦闘に1回使用。使用したものにチェックを入れます。</span><div class="doctrine-choices" aria-label="使用した戦闘ドクトリン">
-            <label class="doctrine-choice"><input type="checkbox" data-check-id="doctrine-assault"><span>強襲ドクトリン<br><small>進軍後も突撃可能</small></span></label>
+            <label class="doctrine-choice"><input type="checkbox" data-check-id="doctrine-assault"><span>強襲ドクトリン<br><small>全力移動後も突撃可能</small></span></label>
             <label class="doctrine-choice"><input type="checkbox" data-check-id="doctrine-assault-extra"><span>強襲ドクトリン（追加使用）<br><small>アサルト同胞団</small></span></label>
             <label class="doctrine-choice"><input type="checkbox" data-check-id="doctrine-devastator"><span>撃滅ドクトリン<br><small>射撃武器にアサルト</small></span></label>
-            <label class="doctrine-choice"><input type="checkbox" data-check-id="doctrine-tactical"><span>戦術ドクトリン<br><small>退却後も射撃・突撃可能</small></span></label>
+            <label class="doctrine-choice"><input type="checkbox" data-check-id="doctrine-tactical"><span>戦術ドクトリン<br><small>退却移動後も射撃・突撃可能</small></span></label>
           </div><span class="doctrine-note">通常の強襲ドクトリンと、アサルト同胞団の追加使用は別々に記録できます。</span></div></div>
           <div class="item doctrine-item" data-unit="キャプテン＋ブレイドガード・ベテラン・スカッド"><div class="item-copy"><label class="doctrine-apply"><input type="checkbox"><span class="item-title">合流ユニットにドクトリンを適用</span></label><span class="item-unit">対象ユニット：キャプテン＋ブレイドガード・ベテラン・スカッド</span><span class="item-detail"><span class="badge">戦略的機動</span>適用するドクトリンを1つ選択。</span><div class="doctrine-choices" role="radiogroup" aria-label="キャプテンの合流ユニットに適用するドクトリン">
-            <label class="doctrine-choice"><input type="radio" name="captain-doctrine" data-check-id="choice-captain-doctrine-assault"><span>強襲ドクトリン<br><small>進軍後も突撃可能</small></span></label>
+            <label class="doctrine-choice"><input type="radio" name="captain-doctrine" data-check-id="choice-captain-doctrine-assault"><span>強襲ドクトリン<br><small>全力移動後も突撃可能</small></span></label>
             <label class="doctrine-choice"><input type="radio" name="captain-doctrine" data-check-id="choice-captain-doctrine-devastator"><span>撃滅ドクトリン<br><small>射撃武器にアサルト</small></span></label>
-            <label class="doctrine-choice"><input type="radio" name="captain-doctrine" data-check-id="choice-captain-doctrine-tactical"><span>戦術ドクトリン<br><small>退却後も射撃・突撃可能</small></span></label>
+            <label class="doctrine-choice"><input type="radio" name="captain-doctrine" data-check-id="choice-captain-doctrine-tactical"><span>戦術ドクトリン<br><small>退却移動後も射撃・突撃可能</small></span></label>
           </div></div></div>
           <label class="item" data-unit="レフテナント＋アサルト・インターセッサー・スカッド"><input type="checkbox"><span class="item-copy"><span class="item-title">他の合流ユニットにも同じドクトリンを適用</span><span class="item-unit">対象ユニット：レフテナント＋アサルト・インターセッサー・スカッド</span><span class="item-detail"><span class="badge">中隊指揮官</span>「戦略的機動」を使った時、キャプテン側で選んだドクトリンを適用できます。</span><span class="doctrine-note" id="sharedDoctrineContent" aria-live="polite">適用するドクトリン：未選択</span></span></label>
-          <label class="item" data-unit="アポセカリー＋ブレイドガード・ベテラン・スカッド"><input type="checkbox"><span class="item-copy"><span class="item-title">負傷モデルを回復する</span><span class="item-unit">対象ユニット：アポセカリーの合流ユニット</span><span class="item-detail"><span class="badge">ナルテシウム</span>負傷モデルがいればD3+1点回復。破壊されたモデルは戻らない。</span></span></label>
+          <label class="item" data-unit="アポセカリー＋ブレイドガード・ベテラン・スカッド"><input type="checkbox"><span class="item-copy"><span class="item-title">負傷した兵を回復する</span><span class="item-unit">対象ユニット：アポセカリーの合流ユニット</span><span class="item-detail"><span class="badge">ナルテシウム</span>負傷した兵がいればD3+1点回復。撃破された兵は復帰しない。</span></span></label>
         </div></section>
 
-        <section class="section" id="movement"><div class="section-head"><span class="phase-no">02</span><h2>移動フェイズ</h2><span class="section-note">進軍／降車の判断時</span></div><div class="items">
-          <label class="item" data-unit="ブレイドガード／アサルト・インターセッサー／インターセッサー"><input type="checkbox"><span class="item-copy"><span class="item-title">進軍ロールを振り直す</span><span class="item-unit">対象ユニット：ブレイドガード・ベテラン・スカッド／アサルト・インターセッサー・スカッド／インターセッサー・スカッド</span><span class="item-detail"><span class="badge purple">タクティカス攻撃部隊</span>タクティカスの進軍ロールを振り直せる。</span></span></label>
+        <section class="section" id="movement"><div class="section-head"><span class="phase-no">02</span><h2>自軍側移動フェイズ</h2><span class="section-note">全力移動／降車の判断時</span></div><div class="items">
+          <label class="item" data-unit="ブレイドガード／アサルト・インターセッサー／インターセッサー"><input type="checkbox"><span class="item-copy"><span class="item-title">全力移動ロールを振り直す</span><span class="item-unit">対象ユニット：ブレイドガード・ベテラン・スカッド／アサルト・インターセッサー・スカッド／インターセッサー・スカッド</span><span class="item-detail"><span class="badge purple">タクティカス攻撃部隊</span>タクティカスの全力移動ロールを振り直せる。</span></span></label>
           <div class="item doctrine-item"><div class="item-copy"><span class="item-title">サイキック能力を1つ選ぶ</span><span class="item-unit">対象ユニット：ライブラリアンの合流ユニット</span><span class="item-detail"><span class="badge">サイキックレベル1</span>各ラウンドに使える能力はどちらか1つ。選択は「次のラウンドへ」を押しても保持します。</span><div class="ability-choices" role="radiogroup" aria-label="ライブラリアンのサイキック能力">
-            <label class="doctrine-choice"><input type="radio" name="librarian-power" data-check-id="choice-librarian-veil"><span>時のヴェール<br><small>進軍を選んだ時に判定。成功で進軍ロールを6にする。判定で1なら戦闘ショック。</small></span></label>
-            <label class="doctrine-choice"><input type="radio" name="librarian-power" data-check-id="choice-librarian-force-dome"><span>フォース・ドーム<br><small>判定成功で次の自分のターン開始まで4+スペシャルセーヴ。判定で1なら戦闘ショック。</small></span></label>
+            <label class="doctrine-choice"><input type="radio" name="librarian-power" data-check-id="choice-librarian-veil"><span>時のヴェール<br><small>全力移動を選んだ時にサイキックテスト。成功で全力移動ロールを6にする。出目1なら戦闘ショック状態。</small></span></label>
+            <label class="doctrine-choice"><input type="radio" name="librarian-power" data-check-id="choice-librarian-force-dome"><span>フォース・ドーム<br><small>サイキックテスト成功で次の自軍側ターン開始までスペシャルセーヴ値4+。出目1なら戦闘ショック状態。</small></span></label>
           </div></div></div>
-          <label class="item" data-unit="インパルサー"><input type="checkbox"><span class="item-copy"><span class="item-title">進軍後に降車を検討</span><span class="item-unit">対象ユニット：インパルサー＋ターミネイターを除く搭乗歩兵</span><span class="item-detail"><span class="badge">急速降車</span>搭乗ユニットは衝撃降車を行える。輸送上限は7体。</span></span></label>
+          <label class="item" data-unit="インパルサー"><input type="checkbox"><span class="item-copy"><span class="item-title">全力移動後に降車を検討</span><span class="item-unit">対象ユニット：インパルサー＋ターミネイターを除く搭乗歩兵</span><span class="item-detail"><span class="badge">急速降車</span>搭乗ユニットは衝撃降車を行える。輸送上限は7体。</span></span></label>
         </div></section>
 
-        <section class="section" id="shooting"><div class="section-head"><span class="phase-no">03</span><h2>射撃フェイズ</h2><span class="section-note">攻撃ユニットを選ぶ時</span></div><div class="items">
-          <label class="item" data-unit="インターセッサー・スカッド"><input type="checkbox"><span class="item-copy"><span class="item-title">ボルター規律を確認</span><span class="item-unit">対象ユニット：インターセッサー・スカッド</span><span class="item-detail"><span class="badge">命中+1</span>自ユニットか射撃対象が目標マーカー範囲内なら、射撃攻撃の命中+1。</span></span></label>
-          <label class="item" data-unit="エラディケイター・スカッド"><input type="checkbox"><span class="item-copy"><span class="item-title">ダメージロールを振り直す</span><span class="item-unit">対象ユニット：エラディケイター・スカッド</span><span class="item-detail"><span class="badge">完全殲滅</span>メルタライフルを含む、このユニットの射撃攻撃のダメージロールが対象。</span></span></label>
-          <label class="item" data-unit="インパルサー"><input type="checkbox"><span class="item-copy"><span class="item-title">射撃デッキを使うか確認</span><span class="item-unit">対象ユニット：インパルサー＋搭乗中の歩兵</span><span class="item-detail"><span class="badge">射撃デッキ7</span>搭乗中の歩兵モデルの射撃武器を車両の射撃に使えるか確認。</span></span></label>
-          <label class="item" data-unit="レフテナント＋アサルト・インターセッサー・スカッド"><input type="checkbox"><span class="item-copy"><span class="item-title">戦術的精密射撃を適用</span><span class="item-unit">対象ユニット：レフテナント＋アサルト・インターセッサー・スカッド</span><span class="item-detail">モンスター／ビークル以外への射撃攻撃は致命的命中。</span></span></label>
-          <label class="item" data-unit="ターミネイター・スカッド"><input type="checkbox"><span class="item-copy"><span class="item-title">9インチ以内の対象に貫通+1</span><span class="item-unit">対象ユニット：ターミネイター・スカッド</span><span class="item-detail">「先駆者の猛威」により、9インチ以内の対象への射撃攻撃の貫通+1。</span></span></label>
+        <section class="section" id="shooting"><div class="section-head"><span class="phase-no">03</span><h2>自軍側射撃フェイズ</h2><span class="section-note">攻撃ユニットを選ぶ時</span></div><div class="items">
+          <label class="item" data-unit="インターセッサー・スカッド"><input type="checkbox"><span class="item-copy"><span class="item-title">ボルター規律を確認</span><span class="item-unit">対象ユニット：インターセッサー・スカッド</span><span class="item-detail"><span class="badge">ヒットロール+1</span>自ユニットまたは射撃対象が作戦目標マーカーの確保範囲内なら、射撃攻撃のヒットロールに+1修正。</span></span></label>
+          <label class="item" data-unit="エラディケイター・スカッド"><input type="checkbox"><span class="item-copy"><span class="item-title">ダメージ量判定ロールを振り直す</span><span class="item-unit">対象ユニット：エラディケイター・スカッド</span><span class="item-detail"><span class="badge">完全殲滅</span>メルタライフルを含む、このユニットの射撃攻撃のダメージ量判定ロールが対象。</span></span></label>
+          <label class="item" data-unit="インパルサー"><input type="checkbox"><span class="item-copy"><span class="item-title">射撃デッキを使うか確認</span><span class="item-unit">対象ユニット：インパルサー＋搭乗中の歩兵</span><span class="item-detail"><span class="badge">射撃デッキ7</span>搭乗中の歩兵が装備する射撃武器を車両の射撃に使えるか確認。</span></span></label>
+          <label class="item" data-unit="レフテナント＋アサルト・インターセッサー・スカッド"><input type="checkbox" data-check-id="phase-shooting-tactical-precision"><span class="item-copy"><span class="item-title">戦術的精密射撃を適用</span><span class="item-unit">対象ユニット：レフテナント＋アサルト・インターセッサー・スカッド</span><span class="item-detail">モンスター／ビークル以外への射撃攻撃は会心ヒット。</span></span></label>
+          <label class="item" data-unit="ターミネイター・スカッド"><input type="checkbox" data-check-id="phase-shooting-terminators-ap"><span class="item-copy"><span class="item-title">9インチ以内の対象に貫通値+1</span><span class="item-unit">対象ユニット：ターミネイター・スカッド</span><span class="item-detail">「先駆者の猛威」により、9インチ以内の対象への射撃攻撃の貫通値+1。</span></span></label>
         </div></section>
 
-        <section class="section" id="fight"><div class="section-head"><span class="phase-no">04</span><h2>突撃・白兵戦フェイズ</h2><span class="section-note">突撃後／攻撃ユニット選択時</span></div><div class="items">
-          <label class="item" data-unit="アサルト・インターセッサー・スカッド"><input type="checkbox"><span class="item-copy"><span class="item-title">突撃後の強化を適用</span><span class="item-unit">対象ユニット：アサルト・インターセッサー・スカッド</span><span class="item-detail"><span class="badge">目標指定の突撃</span>このターンに突撃移動していれば、白兵戦の筋力+1、貫通+1。</span></span></label>
-          <label class="item" data-unit="キャプテン＋ブレイドガード／レフテナント＋アサルト・インターセッサー"><input type="checkbox"><span class="item-copy"><span class="item-title">熾烈な強襲の連続命中1を適用</span><span class="item-unit">対象ユニット：キャプテン＋ブレイドガード／レフテナント＋アサルト・インターセッサー</span><span class="item-detail">モンスター／ビークル以外への白兵戦攻撃に常時適用。</span></span></label>
+        <section class="section" id="fight"><div class="section-head"><span class="phase-no">04</span><h2>自軍側突撃フェイズ／白兵戦フェイズ</h2><span class="section-note">突撃後／攻撃ユニットを選ぶ時</span></div><div class="items">
+          <label class="item" data-unit="アサルト・インターセッサー・スカッド"><input type="checkbox"><span class="item-copy"><span class="item-title">突撃後の強化を適用</span><span class="item-unit">対象ユニット：アサルト・インターセッサー・スカッド</span><span class="item-detail"><span class="badge">目標指定の突撃</span>このターンに突撃移動していれば、白兵戦武器の攻撃力+1、貫通値+1。</span></span></label>
+          <label class="item" data-unit="キャプテン＋ブレイドガード／レフテナント＋アサルト・インターセッサー"><input type="checkbox"><span class="item-copy"><span class="item-title">熾烈な強襲の連続命中1を適用</span><span class="item-unit">対象ユニット：キャプテン＋ブレイドガード／レフテナント＋アサルト・インターセッサー</span><span class="item-detail">モンスター／ビークル以外への白兵戦攻撃は会心ヒット。</span></span></label>
           <div class="item doctrine-item"><div class="item-copy"><span class="item-title">ブレイドガード・ベテランの能力を1つ選ぶ</span><span class="item-unit">対象ユニット：キャプテン＋ブレイドガード・ベテラン・スカッド</span><span class="item-detail"><span class="badge">1ターンに1回</span>このラウンドで使用する能力を選択。次のラウンドへ進むと選択は解除されます。</span><div class="ability-choices" role="radiogroup" aria-label="ブレイドガード・ベテランの能力">
-            <label class="doctrine-choice"><input type="radio" name="bladeguard-ability" data-check-id="round-bladeguard-fight"><span>このユニットの攻撃の命中+1</span></label>
+            <label class="doctrine-choice"><input type="radio" name="bladeguard-ability" data-check-id="round-bladeguard-fight"><span>このユニットの攻撃のヒットロール+1</span></label>
             <label class="doctrine-choice"><input type="radio" name="bladeguard-ability" data-check-id="round-bladeguard-defend"><span>このユニットを対象にした攻撃のヒットロール−1</span></label>
           </div></div></div>
-          <label class="item" data-unit="レフテナント＋アサルト・インターセッサー・スカッド"><input type="checkbox"><span class="item-copy"><span class="item-title">戦術的精密射撃を適用</span><span class="item-unit">対象ユニット：レフテナント＋アサルト・インターセッサー・スカッド</span><span class="item-detail">モンスター／ビークル以外への白兵戦攻撃は致命的命中。</span></span></label>
-          <label class="item" data-unit="ターミネイター・スカッド"><input type="checkbox"><span class="item-copy"><span class="item-title">9インチ以内の対象に貫通+1</span><span class="item-unit">対象ユニット：ターミネイター・スカッド</span><span class="item-detail">「先駆者の猛威」により、9インチ以内の対象への白兵戦攻撃の貫通+1。</span></span></label>
-          <label class="item" data-unit="キャプテン＋ブレイドガード・ベテラン・スカッド"><input type="checkbox" data-check-id="battle-captain-last-stand"><span class="item-copy"><span class="item-title">最後の奮戦を使う</span><span class="item-unit">対象ユニット：キャプテン＋ブレイドガード・ベテラン・スカッド</span><span class="item-detail"><span class="badge">1戦闘に1回</span>白兵戦を行う時、指揮官モデルの攻撃回数+3、致命的な傷。使用済みチェックはラウンドをまたいで保持。</span></span></label>
+          <label class="item" data-unit="レフテナント＋アサルト・インターセッサー・スカッド"><input type="checkbox" data-check-id="phase-fight-tactical-precision"><span class="item-copy"><span class="item-title">戦術的精密射撃を適用</span><span class="item-unit">対象ユニット：レフテナント＋アサルト・インターセッサー・スカッド</span><span class="item-detail">モンスター／ビークル以外への白兵戦攻撃は会心ヒット。</span></span></label>
+          <label class="item" data-unit="ターミネイター・スカッド"><input type="checkbox" data-check-id="phase-fight-terminators-ap"><span class="item-copy"><span class="item-title">9インチ以内の対象に貫通値+1</span><span class="item-unit">対象ユニット：ターミネイター・スカッド</span><span class="item-detail">「先駆者の猛威」により、9インチ以内の対象への白兵戦攻撃の貫通値+1。</span></span></label>
+          <label class="item" data-unit="キャプテン＋ブレイドガード・ベテラン・スカッド"><input type="checkbox" data-check-id="battle-captain-last-stand"><span class="item-copy"><span class="item-title">最後の奮戦を使う</span><span class="item-unit">対象ユニット：キャプテン＋ブレイドガード・ベテラン・スカッド</span><span class="item-detail"><span class="badge">1戦闘に1回</span>白兵戦を行う時、指揮官の攻撃回数+3、会心ウーンズ。使用済みチェックはラウンドをまたいで保持。</span></span></label>
         </div></section>
 
-        <section class="section" id="opponent"><div class="section-head"><span class="phase-no">相手</span><h2>相手の射撃・白兵戦フェイズ</h2><span class="section-note">敵が攻撃対象を選んだ時</span></div><div class="items">
+        <section class="section" id="opponent"><div class="section-head"><span class="phase-no">相手</span><h2>敵軍側射撃フェイズ／白兵戦フェイズ</h2><span class="section-note">敵が攻撃対象を選んだ時</span></div><div class="items">
           <div class="item" data-unit="攻撃対象になった味方アスタルテス"><span class="item-copy"><span class="item-title">相手の攻撃対象を見て策略を検討</span><span class="item-unit">対象ユニット：攻撃対象になった味方アスタルテス</span><span class="item-detail">「皇帝の鎧」を使えるタイミングです。詳細はデタッチメント策略欄を確認。</span></span></div>
           <label class="item" id="bladeguardHitMinusReminder" data-unit="キャプテン＋ブレイドガード・ベテラン・スカッド" hidden><input type="checkbox" data-check-id="round-bladeguard-hit-minus"><span class="item-copy"><span class="item-title">このユニットを対象にした攻撃のヒットロール−1を適用</span><span class="item-unit">対象ユニット：キャプテン＋ブレイドガード・ベテラン・スカッド</span><span class="item-detail">敵ユニットがこのユニットを攻撃対象に選んだ時にチェック。</span></span></label>
           <label class="item" data-unit="ライブラリアン＋インターセッサー・スカッド"><input type="checkbox"><span class="item-copy"><span class="item-title">サイキック攻撃に痛みを知らぬ者4+</span><span class="item-unit">対象ユニット：ライブラリアン＋インターセッサー・スカッド</span><span class="item-detail">「サイキックフード」による防御。サイキック攻撃でダメージを受ける時に適用。</span></span></label>
-          <label class="item" data-unit="インパルサー"><input type="checkbox"><span class="item-copy"><span class="item-title">シールドドームの5+スペシャルセーヴ</span><span class="item-unit">対象ユニット：インパルサー</span><span class="item-detail">攻撃によるダメージを受ける時に5+スペシャルセーヴを適用。破壊された時は「致命的破壊D3」も処理。</span></span></label>
-          <div class="item" data-unit="まだ白兵戦を行っていない味方アスタルテス"><span class="item-copy"><span class="item-title">白兵戦でモデルが倒されたら策略を確認</span><span class="item-unit">対象ユニット：まだ白兵戦を行っていない味方アスタルテス</span><span class="item-detail">「死してなお任務を」を使えるタイミングです。詳細はデタッチメント策略欄を確認。</span></span></div>
+          <label class="item" data-unit="インパルサー"><input type="checkbox"><span class="item-copy"><span class="item-title">シールドドームのスペシャルセーヴ値5+</span><span class="item-unit">対象ユニット：インパルサー</span><span class="item-detail">攻撃によるダメージを受ける時にスペシャルセーヴィングを行なう。撃破された時は「恐るべき最期 D3」も処理。</span></span></label>
+          <div class="item" data-unit="まだ白兵戦を行っていない味方アスタルテス"><span class="item-copy"><span class="item-title">白兵戦で兵が撃破されたら策略を確認</span><span class="item-unit">対象ユニット：まだ白兵戦を行っていない味方アスタルテス</span><span class="item-detail">「死してなお任務を」を使えるタイミングです。詳細はデタッチメント策略欄を確認。</span></span></div>
         </div></section>
 
         <section class="section" id="passive"><div class="section-head"><span class="phase-no">常時</span><h2>常時・条件を満たした時</h2><span class="section-note">該当する場面で思い出す</span></div><div class="items">
-          <label class="item" data-unit="インターセッサー・スカッド"><input type="checkbox"><span class="item-copy"><span class="item-title">任務中も射撃可能</span><span class="item-unit">対象ユニット：インターセッサー・スカッド</span><span class="item-detail">「戦術的主力」により、アクション開始後も射撃可能。交戦中または戦闘ショック中でもアクション開始の適格性を失わない。</span></span></label>
+          <label class="item" data-unit="インターセッサー・スカッド"><input type="checkbox"><span class="item-copy"><span class="item-title">任務中も射撃可能</span><span class="item-unit">対象ユニット：インターセッサー・スカッド</span><span class="item-detail">「戦術的主力」により、アクション開始後も射撃可能。接敵範囲内または戦闘ショック状態でも、アクション開始の適格性を失わない。</span></span></label>
         </div></section>
 
         <section class="section" id="stratagems"><div class="section-head"><span class="phase-no">策略</span><h2>デタッチメント策略</h2><span class="section-note">使用タイミング別・全6種</span></div>
-          <div class="stratagem-group"><h3>アサルト同胞団</h3><p class="group-note">各策略1CP</p><h4 class="stratagem-phase">相手の射撃／白兵戦フェイズ</h4><div class="items">
-            <label class="item" data-unit="攻撃対象になった味方アスタルテス"><input type="checkbox" data-check-id="strategy:皇帝の鎧"><span class="item-copy"><span class="item-title">皇帝の鎧 <span class="badge red">1CP · 相手の射撃／白兵戦</span></span><span class="item-unit">対象ユニット：攻撃対象になった味方アスタルテス</span><span class="item-detail">敵が味方を攻撃対象にした時に使用。その敵ユニットの攻撃終了まで、攻撃の貫通-1。</span></span></label>
-          </div><h4 class="stratagem-phase">自分の白兵戦フェイズ</h4><div class="items">
-            <label class="item" data-unit="白兵戦を行う味方アスタルテス"><input type="checkbox" data-check-id="strategy:遺伝子改造の力"><span class="item-copy"><span class="item-title">遺伝子改造の力 <span class="badge red">1CP · 自分の白兵戦</span></span><span class="item-unit">対象ユニット：白兵戦を行う味方アスタルテス</span><span class="item-detail">味方ユニットが戦うため選ばれた時に使用。「突撃槍」を付与。強襲ドクトリン中なら貫通+1も付与。</span></span></label>
-          </div><h4 class="stratagem-phase">相手の白兵戦フェイズ</h4><div class="items">
-            <label class="item" data-unit="まだ戦っていない味方アスタルテス"><input type="checkbox" data-check-id="strategy:死してなお任務を"><span class="item-copy"><span class="item-title">死してなお任務を <span class="badge red">1CP · 相手の白兵戦</span></span><span class="item-unit">対象ユニット：まだ戦っていない味方アスタルテス</span><span class="item-detail">相手が味方を攻撃対象にした時、まだ戦っていないユニットのモデルが破壊されたらD6判定（強襲ドクトリン中は+1）。4+で自ユニットが戦うまで、またはフェイズ終了まで残す。</span></span></label>
+          <div class="stratagem-group"><h3>アサルト同胞団</h3><p class="group-note">各策略1CP</p><h4 class="stratagem-phase">敵軍側射撃／白兵戦フェイズ</h4><div class="items">
+            <label class="item" data-unit="攻撃対象になった味方アスタルテス"><input type="checkbox" data-check-id="strategy:皇帝の鎧"><span class="item-copy"><span class="item-title">皇帝の鎧 <span class="badge red">1CP · 敵軍側射撃／白兵戦</span></span><span class="item-unit">対象ユニット：攻撃対象になった味方アスタルテス</span><span class="item-detail">敵が味方を攻撃対象にした時に使用。その敵ユニットの攻撃終了まで、攻撃の貫通値に-1修正。</span></span></label>
+          </div><h4 class="stratagem-phase">自軍側白兵戦フェイズ</h4><div class="items">
+            <label class="item" data-unit="白兵戦を行う味方アスタルテス"><input type="checkbox" data-check-id="strategy:遺伝子改造の力"><span class="item-copy"><span class="item-title">遺伝子改造の力 <span class="badge red">1CP · 自軍側白兵戦</span></span><span class="item-unit">対象ユニット：白兵戦を行う味方アスタルテス</span><span class="item-detail">味方ユニットが戦うため選ばれた時に使用。「突撃槍」を付与。強襲ドクトリン中なら貫通値+1も付与。</span></span></label>
+          </div><h4 class="stratagem-phase">敵軍側白兵戦フェイズ</h4><div class="items">
+            <label class="item" data-unit="まだ戦っていない味方アスタルテス"><input type="checkbox" data-check-id="strategy:死してなお任務を"><span class="item-copy"><span class="item-title">死してなお任務を <span class="badge red">1CP · 敵軍側白兵戦</span></span><span class="item-unit">対象ユニット：まだ白兵戦を行っていない味方アスタルテス</span><span class="item-detail">敵が味方を攻撃対象にした時、まだ白兵戦を行っていないユニット内の兵が撃破されたらD6をロール（強襲ドクトリン中は+1）。4+で自ユニットが戦うまで、またはフェイズ終了まで残す。</span></span></label>
           </div></div>
-          <div class="stratagem-group"><h3>タクティカス攻撃部隊</h3><p class="group-note">各策略1CP</p><h4 class="stratagem-phase">相手の射撃／白兵戦フェイズ</h4><div class="items">
-            <label class="item" data-unit="攻撃対象に選ばれた味方タクティカス"><input type="checkbox" data-check-id="strategy:猛烈な突撃"><span class="item-copy"><span class="item-title">猛烈な突撃 <span class="badge purple">1CP · 射撃／白兵戦</span></span><span class="item-unit">対象ユニット：攻撃対象に選ばれた味方タクティカス</span><span class="item-detail">攻撃対象に選ばれた時に使用。通常の敵には連続命中1、モンスター／ビークルには致命的命中。</span></span></label>
-          </div><h4 class="stratagem-phase">相手の白兵戦フェイズ</h4><div class="items">
-            <label class="item" data-unit="目標マーカー範囲内で戦える味方タクティカス"><input type="checkbox" data-check-id="strategy:超人の俊敏さ"><span class="item-copy"><span class="item-title">超人の俊敏さ <span class="badge purple">1CP · 白兵戦</span></span><span class="item-unit">対象ユニット：目標マーカー範囲内で戦える味方タクティカス</span><span class="item-detail">敵ユニットが戦い終えた時に使用。「先手」を得て、次に戦うユニットとして選ぶ。</span></span></label>
+          <div class="stratagem-group"><h3>タクティカス攻撃部隊</h3><p class="group-note">各策略1CP</p><h4 class="stratagem-phase">敵軍側射撃／白兵戦フェイズ</h4><div class="items">
+            <label class="item" data-unit="攻撃対象に選ばれた味方タクティカス"><input type="checkbox" data-check-id="strategy:猛烈な突撃"><span class="item-copy"><span class="item-title">猛烈な突撃 <span class="badge purple">1CP · 射撃／白兵戦</span></span><span class="item-unit">対象ユニット：攻撃対象に選ばれた味方タクティカス</span><span class="item-detail">攻撃対象に選ばれた時に使用。通常の敵には[連続命中 1]、モンスター／ビークルには[会心ヒット]。</span></span></label>
+          </div><h4 class="stratagem-phase">敵軍側白兵戦フェイズ</h4><div class="items">
+            <label class="item" data-unit="作戦目標マーカーの確保範囲内で戦える味方タクティカス"><input type="checkbox" data-check-id="strategy:超人の俊敏さ"><span class="item-copy"><span class="item-title">超人の俊敏さ <span class="badge purple">1CP · 白兵戦</span></span><span class="item-unit">対象ユニット：作戦目標マーカーの確保範囲内で戦える味方タクティカス</span><span class="item-detail">敵ユニットが戦い終えた時に使用。「先手」を得て、次に戦うユニットとして選ぶ。</span></span></label>
             <label class="item" data-unit="再編移動する味方タクティカス"><input type="checkbox" data-check-id="strategy:戦術的集中"><span class="item-copy"><span class="item-title">戦術的集中 <span class="badge purple">1CP · 白兵戦</span></span><span class="item-unit">対象ユニット：再編移動する味方タクティカス</span><span class="item-detail">再編移動のため選ばれた時に使用。移動距離を最大D3+3インチにする。</span></span></label>
           </div></div>
         </section>
@@ -250,6 +250,18 @@
         '戦術的精密射撃を適用', '9インチ以内の対象に貫通+1', 'サイキック攻撃に痛みを知らぬ者4+', 'シールドドームの5+スペシャルセーヴ', '任務中も射撃可能'
       ];
       const checkId = box => box.dataset.checkId || box.closest('.item')?.querySelector('.item-title')?.textContent.trim();
+      const stateAliases = {
+        '進軍ロールを振り直す': ['全力移動ロールを振り直す'],
+        'ダメージロールを振り直す': ['ダメージ量判定ロールを振り直す'],
+        '負傷モデルを回復する': ['負傷した兵を回復する'],
+        '戦術的精密射撃を適用': ['phase-shooting-tactical-precision', 'phase-fight-tactical-precision'],
+        '9インチ以内の対象に貫通+1': ['phase-shooting-terminators-ap', 'phase-fight-terminators-ap']
+      };
+      const applyStateAliases = state => {
+        for (const [oldId, newIds] of Object.entries(stateAliases)) {
+          if (state[oldId] === true) newIds.forEach(id => { state[id] = true; });
+        }
+      };
       const fill = document.getElementById('progressFill');
       const text = document.getElementById('progressText');
       const bar = document.querySelector('[role="progressbar"]');
@@ -259,9 +271,9 @@
       const captainDoctrineChoices = [...document.querySelectorAll('input[name="captain-doctrine"]')];
       const sharedDoctrineContent = document.getElementById('sharedDoctrineContent');
       const doctrineEffects = {
-        'choice-captain-doctrine-assault': '強襲ドクトリン：進軍後も突撃可能',
+        'choice-captain-doctrine-assault': '強襲ドクトリン：全力移動後も突撃可能',
         'choice-captain-doctrine-devastator': '撃滅ドクトリン：射撃武器にアサルト',
-        'choice-captain-doctrine-tactical': '戦術ドクトリン：退却後も射撃・突撃可能'
+        'choice-captain-doctrine-tactical': '戦術ドクトリン：退却移動後も射撃・突撃可能'
       };
       const syncSharedDoctrine = () => {
         const selected = captainDoctrineChoices.find(box => box.checked);
@@ -286,7 +298,9 @@
       try {
         const saved = JSON.parse(localStorage.getItem(storageKey) || 'null');
         if (saved && !Array.isArray(saved)) {
-          boxes.forEach(box => { box.checked = saved[checkId(box)] === true; });
+          const savedState = { ...saved };
+          applyStateAliases(savedState);
+          boxes.forEach(box => { box.checked = savedState[checkId(box)] === true; });
           if (!saved['before-teleport-homer'] && saved['テレポート・ホーマーを置く'] === true) document.querySelector('[data-check-id="before-teleport-homer"]').checked = true;
           if (!saved['before-arrival-plan'] && saved['到着方法を決める'] === true) document.querySelector('[data-check-id="before-arrival-plan"]').checked = true;
           if (!saved['battle-captain-last-stand'] && saved['最後の奮戦を使う'] === true) document.querySelector('[data-check-id="battle-captain-last-stand"]').checked = true;
@@ -304,6 +318,7 @@
           if (migrated['到着方法を決める'] === true) migrated['before-arrival-plan'] = true;
           if (legacy[8] === true || legacy[9] === true) migrated[legacy[8] === true ? 'choice-librarian-veil' : 'choice-librarian-force-dome'] = true;
           if (migrated['最後の奮戦を使う'] === true) migrated['battle-captain-last-stand'] = true;
+          applyStateAliases(migrated);
           boxes.forEach(box => { box.checked = migrated[checkId(box)] === true; });
           if (legacy.length) localStorage.setItem(storageKey, JSON.stringify(Object.fromEntries(boxes.map(box => [checkId(box), box.checked]))));
         }
